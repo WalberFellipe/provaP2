@@ -10,7 +10,7 @@ export default function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route path='/' exact component={Home} />
-                <Route path='/Comments' component={Comments} />
+                <Route path='/coments' component={Comments} />
                 <Route path='*' component={() => (<h1>Not Foound!</h1>)} />
             </Switch>
         </BrowserRouter>

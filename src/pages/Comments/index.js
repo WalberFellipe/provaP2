@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import api from '../../services/api'
 
-import './style.css';
+export default function Coments() {
+    const [coments, setComents] = useState([]);
+    const postId = localStorage.getItem('postId')
+    useEffect(() => {
+        api.get(`comments?postId=${postId}`).then(response => {
+            setComents(response.data);
+        })
+    }, [postId])
 
-export default function Comments(){
     return (
-        <div>
-            <h1>PROVA</h1>
+        <div className="container">
+            <h1>COMENTÁRIOS REFERENTES AO POST</h1>
+            <div className="content">
+                <ul>
+                    {
+                        coments.map(coment => (
+                            <li key={coment.id}>
+                                <div>
+                                    <p> {coment.name} </p>
+                                    <p> {coment.email }</p>
+                                    <strong> {coment.body} </strong>
+                                </div>
+                            </li>
+                        ))
+                    }
+
+                </ul>
+            </div>
         </div>
     )
 }
