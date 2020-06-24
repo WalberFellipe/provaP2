@@ -25,10 +25,12 @@ export default function Home() {
                 <ul>
                     {
                         posts.map(post => (
-                            <div>
+                            <div>                            
                             <li key={post.id} onClick={() => handleComents(post.id)}>
+                            <strong> POST NÚMERO {post.id}</strong>
                                 <h1>{post.title}</h1>
                                 <p>{ post.body}</p>
+                                
                             </li>
                             </div>
                         ))
